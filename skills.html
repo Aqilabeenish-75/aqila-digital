@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<!-- Skills page. Tells the browser this is a modern HTML5 document. -->
+<html lang="en">
+<head>
+  <!-- Lets the page show text correctly (including symbols) -->
+  <meta charset="utf-8">
+  <!-- Makes the page fit phone screens instead of shrinking -->
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <!-- The title shows on the browser tab -->
+  <title>Skills: Web Development &amp; Lead Generation | Aqila Digital</title>
+  <!-- The description is the short text Google shows under the title -->
+  <meta name="description" content="HTML &amp; CSS web development and verified lead generation by Aqila Beenish. Every project gets a custom quote, so message me to discuss yours.">
+  <!-- Browser tab icon, and the icon used when saved to a phone home screen -->
+  <link rel="icon" type="image/png" href="images/favicon.png">
+  <link rel="apple-touch-icon" href="images/apple-touch-icon.png">
+
+  <!-- Link preview picture (shown when the page is shared on WhatsApp, Facebook, X, etc.).
+       These need the FULL web address: replace YOUR-SITE-ADDRESS with your real
+       address after publishing, e.g. aqiladigital.netlify.app -->
+  <meta property="og:image" content="https://YOUR-SITE-ADDRESS/images/logo-full.jpg">
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:image" content="https://YOUR-SITE-ADDRESS/images/logo-full.jpg">
+  <!-- Google Fonts: Playfair Display (headings) and Poppins (body text).
+       "preconnect" starts the connection early so fonts load faster. -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&family=Playfair+Display:ital,wght@0,600;0,700;1,600&display=swap" rel="stylesheet">
+
+  <!-- Connects the shared stylesheet (all pages use the same one) -->
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+  <!-- ===== HEADER: sticky navigation bar (same on every page) ===== -->
+  <header class="nav">
+    <div class="wrap nav-inner">
+
+      <!-- Logo: links back to the Home page -->
+      <a class="brand" href="index.html">
+        <img class="brand-logo" src="images/logo-mark.png" alt="Aqila Digital logo">
+        <span>Aqila <b>Digital</b></span>
+      </a>
+
+      <!-- Page links. The link with class="active" is the current page -->
+      <nav class="nav-links" aria-label="Main menu">
+        <a href="index.html">Home</a>
+        <a href="about.html">About</a>
+        <a href="skills.html" class="active">Skills</a>
+        <a href="portfolio.html">Portfolio</a>
+        <a href="contact.html">Contact</a>
+        <a class="btn btn-primary" href="contact.html">Hire Me</a>
+      </nav>
+
+      <!-- Menu button: only visible on phones. It will open the menu in Step 14 -->
+      <button class="menu-btn" type="button" aria-label="Open menu" aria-expanded="false">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round">
+          <path d="M4 7h16M4 12h16M4 17h16"/>
+        </svg>
+      </button>
+
+    </div>
+  </header>
+
+  <main>
+
+    <!-- ===== PAGE INTRO ===== -->
+    <section class="page-hero">
+      <div class="wrap reveal">
+        <span class="eyebrow">Skills</span>
+        <h1>The skills I bring to <em class="accent">your project</em>.</h1>
+        <p class="lead">A growing toolkit. Every project gets a custom quote, so message me to discuss yours.</p>
+      </div>
+    </section>
+
+    <!-- ===== TWO BIG SKILL CARDS ===== -->
+    <section class="section" style="padding-top: 1rem;">
+      <div class="wrap">
+
+        <div class="skill-grid">
+
+          <!-- id="web" lets links like skills.html#web jump straight here -->
+          <article class="card skill-card reveal" id="web">
+            <span class="tag">Main skill</span>
+            <h2>Web Development</h2>
+            <p>Clean, fast and mobile-friendly websites built with HTML &amp; CSS.</p>
+            <ul class="ticks">
+              <li>Business websites and landing pages</li>
+              <li>Personal portfolio websites</li>
+              <li>Fully responsive on phone, tablet and desktop</li>
+              <li>Contact forms and WhatsApp buttons</li>
+            </ul>
+            <a class="more" href="contact.html">Start a website project →</a>
+          </article>
+
+          <article class="card skill-card reveal" id="leads">
+            <span class="tag">Skill</span>
+            <h2>Lead Generation</h2>
+            <p>Helping businesses find and reach the right people.</p>
+            <ul class="ticks">
+              <li>Finding business emails of decision-makers</li>
+              <li>Verifying emails to check they're valid</li>
+              <li>Clean, organised lead lists in Excel or Google Sheets</li>
+              <li>3 months of client experience</li>
+            </ul>
+            <p class="mini-offer">Want to test my work? <a href="contact.html#leads">Get 5 verified leads free →</a></p>
+          </article>
+
+        </div>
+
+        <!-- ===== CURRENTLY LEARNING: full-width light peach card ===== -->
+        <div class="card next-card reveal" id="next">
+          <h2>Currently learning</h2>
+          <p>I'm adding new digital skills to my toolkit. They'll be listed here as soon as they're ready.</p>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ===== FAQ: beige background. <details> opens on click, no JavaScript needed ===== -->
+    <section class="section bg-beige">
+      <div class="wrap">
+
+        <div class="section-head reveal">
+          <h2>Frequently asked questions</h2>
+        </div>
+
+        <div class="faq reveal">
+          <details>
+            <summary>How much do you charge?</summary>
+            <p>Every project is different, so I give a custom quote based on what you need. Send me a message for a quick, free quote.</p>
+          </details>
+          <details>
+            <summary>How long does a website take?</summary>
+            <p>It depends on the number of pages and features. A simple landing page is usually fast to deliver; I'll give you a clear timeline before we start.</p>
+          </details>
+          <details>
+            <summary>Do you work with clients outside Pakistan?</summary>
+            <p>Yes. I work with clients worldwide, including the UK and US.</p>
+          </details>
+          <details>
+            <summary>How can I contact you?</summary>
+            <p>Use the form on the Contact page, email me, or message me on WhatsApp. I reply within 24 hours.</p>
+          </details>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ===== HIRE ME BAND ===== -->
+    <section class="cta-band">
+      <div class="wrap reveal">
+        <span class="eyebrow">Let's work together</span>
+        <h2>Have a project in mind? <em class="accent">Let's talk.</em></h2>
+        <p class="lead">Whether you need a website, help finding new clients, or a hand with your digital work, I'd love to hear about it.</p>
+        <div class="cta-buttons">
+          <a class="btn btn-primary" href="contact.html">Hire Me →</a>
+          <a class="btn btn-ghost" href="https://wa.me/923176497826">Chat on WhatsApp</a>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- ===== FOOTER (same on every page) ===== -->
+  <footer class="footer">
+    <div class="wrap">
+
+      <!-- Three columns: about, links, contact -->
+      <div class="foot">
+        <div>
+          <a class="brand" href="index.html">
+            <span class="brand-badge"><img src="images/logo-mark.png" alt="Aqila Digital logo"></span>
+            <span>Aqila Digital</span>
+          </a>
+          <p>Aqila Beenish: web developer and digital professional helping businesses grow online, from clean websites to verified business leads.</p>
+        </div>
+
+        <div>
+          <h4>Explore</h4>
+          <ul>
+            <li><a href="about.html">About</a></li>
+            <li><a href="skills.html">Skills</a></li>
+            <li><a href="portfolio.html">Portfolio</a></li>
+            <li><a href="contact.html">Hire Me</a></li>
+          </ul>
+        </div>
+
+        <div>
+          <h4>Contact</h4>
+          <ul>
+            <li><a href="mailto:drawingacadmey@gmail.com">drawingacadmey@gmail.com</a></li>
+            <li><a href="https://wa.me/923176497826">WhatsApp: +92 317 6497826</a></li>
+            <li>Replies within 24 hours</li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- Bottom line. The year sits in <span id="year"> so JavaScript can update it later -->
+      <div class="copy">
+        <span>&copy; <span id="year">2026</span> Aqila Digital. All rights reserved.</span>
+        <span>Made with care by Aqila Beenish</span>
+      </div>
+
+    </div>
+  </footer>
+
+  <!-- ===== Round green WhatsApp button, fixed at the bottom-right ===== -->
+  <a class="wa" href="https://wa.me/923176497826?text=Hi%20Aqila%2C%20I%20saw%20your%20portfolio%20and%20would%20like%20to%20work%20with%20you." aria-label="Chat on WhatsApp">
+    <svg width="30" height="30" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+      <path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2Zm5.3 14.1c-.2.6-1.3 1.2-1.8 1.2-.5.1-1 .2-3.4-.7-2.8-1.1-4.6-4-4.8-4.2-.1-.2-1.1-1.5-1.1-2.9s.7-2.1 1-2.4c.3-.3.6-.3.8-.3h.6c.2 0 .4 0 .6.5l.9 2.1c.1.2.1.4 0 .6l-.3.5-.4.5c-.1.1-.3.3-.1.6.2.3.7 1.2 1.6 2 1.1 1 2 1.3 2.3 1.4.3.1.5.1.6-.1l.9-1.1c.2-.3.4-.2.7-.1l2 1c.3.1.5.2.5.3.1.2.1.8-.2 1.4Z"/>
+    </svg>
+  </a>
+
+  <!-- Connects the shared JavaScript. It is at the bottom so the page loads first -->
+  <script src="main.js"></script>
+</body>
+</html>
