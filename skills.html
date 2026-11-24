@@ -64,7 +64,7 @@
   <main>
 
     <!-- ===== PAGE INTRO ===== -->
-    <section class="page-hero">
+    <section class="page-hero page-hero-tight">
       <div class="wrap reveal">
         <span class="eyebrow">Skills</span>
         <h1>The skills I bring to <em class="accent">your project</em>.</h1>
@@ -73,14 +73,21 @@
     </section>
 
     <!-- ===== TWO BIG SKILL CARDS ===== -->
-    <section class="section" style="padding-top: 1rem;">
+    <section class="section skills-section">
       <div class="wrap">
 
         <div class="skill-grid">
 
           <!-- id="web" lets links like skills.html#web jump straight here -->
           <article class="card skill-card reveal" id="web">
-            <span class="tag">Main skill</span>
+            <!-- Top line of the card: icon box and tag side by side -->
+            <div class="skill-head">
+              <span class="skill-ico">
+                <!-- code / browser icon -->
+                <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="4" width="18" height="16" rx="3"/><path d="m9 10-2 2 2 2M15 10l2 2-2 2M3 8h18"/></svg>
+              </span>
+              <span class="tag">Main skill</span>
+            </div>
             <h2>Web Development</h2>
             <p>Clean, fast and mobile-friendly websites built with HTML &amp; CSS.</p>
             <ul class="ticks">
@@ -93,7 +100,13 @@
           </article>
 
           <article class="card skill-card reveal" id="leads">
-            <span class="tag">Skill</span>
+            <div class="skill-head">
+              <span class="skill-ico">
+                <!-- search (magnifying glass) icon -->
+                <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg>
+              </span>
+              <span class="tag">Skill</span>
+            </div>
             <h2>Lead Generation</h2>
             <p>Helping businesses find and reach the right people.</p>
             <ul class="ticks">
@@ -192,6 +205,30 @@
             <li><a href="https://wa.me/923176497826">WhatsApp: +92 317 6497826</a></li>
             <li>Replies within 24 hours</li>
           </ul>
+          <!-- Social media icons. The links come from SOCIAL_LINKS at the top of main.js.
+               data-social says which one each icon is. -->
+          <div class="social">
+            <a class="social-link" href="#" data-social="linkedin" aria-label="Aqila Digital on LinkedIn">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M8 11v5"/><path d="M8 8v.01"/><path d="M12 16v-5"/><path d="M16 16v-3a2 2 0 0 0-4 0"/><path d="M3 7a4 4 0 0 1 4-4h10a4 4 0 0 1 4 4v10a4 4 0 0 1-4 4H7a4 4 0 0 1-4-4z"/></svg>
+              <span class="social-tip" aria-hidden="true">Coming soon</span>
+            </a>
+            <a class="social-link" href="#" data-social="tiktok" aria-label="Aqila Digital on TikTok">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 7.917v4.034a9.948 9.948 0 0 1-5-1.951v4.5a6.5 6.5 0 1 1-8-6.326v4.326a2.5 2.5 0 1 0 4 2v-11.5h4.083a6.005 6.005 0 0 0 4.917 4.917z"/></svg>
+              <span class="social-tip" aria-hidden="true">Coming soon</span>
+            </a>
+            <a class="social-link" href="#" data-social="instagram" aria-label="Aqila Digital on Instagram">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 8a4 4 0 0 1 4-4h8a4 4 0 0 1 4 4v8a4 4 0 0 1-4 4H8a4 4 0 0 1-4-4z"/><path d="M9 12a3 3 0 1 0 6 0 3 3 0 0 0-6 0"/><path d="M16.5 7.5v.01"/></svg>
+              <span class="social-tip" aria-hidden="true">Coming soon</span>
+            </a>
+            <a class="social-link" href="#" data-social="facebook" aria-label="Aqila Digital on Facebook">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 10v4h3v7h4v-7h3l1-4h-4V8a1 1 0 0 1 1-1h3V3h-3a5 5 0 0 0-5 5v2z"/></svg>
+              <span class="social-tip" aria-hidden="true">Coming soon</span>
+            </a>
+            <a class="social-link" href="#" data-social="youtube" aria-label="Aqila Digital on YouTube">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M2 8a4 4 0 0 1 4-4h12a4 4 0 0 1 4 4v8a4 4 0 0 1-4 4H6a4 4 0 0 1-4-4z"/><path d="M10 9l5 3-5 3z"/></svg>
+              <span class="social-tip" aria-hidden="true">Coming soon</span>
+            </a>
+          </div>
         </div>
       </div>
 

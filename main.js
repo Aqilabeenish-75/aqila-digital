@@ -6,10 +6,27 @@
 //   3. Footer year
 //   4. Portfolio filter
 //   5. Contact form (contact.html)
+//   6. Social media icons (footer and contact page)
 //
 // Everything is wrapped in (function () { ... })();
 // This keeps our variables private, so they can't clash with other code.
 // =====================================================
+// =====================================================
+// YOUR SOCIAL MEDIA LINKS: the ONE place to change them.
+// Replace each "#" with the full address of your profile, inside the quotes,
+// for example:  linkedin: "https://www.linkedin.com/in/your-name",
+// While a link is "#", the icon shows a small "Coming soon" tip when clicked.
+// With a real link, the icon opens your profile in a new tab.
+// All icons on all pages read their links from this list.
+// =====================================================
+const SOCIAL_LINKS = {
+  linkedin:  "#",
+  tiktok:    "https://www.tiktok.com/@aqiladigital",
+  instagram: "#",
+  facebook:  "#",
+  youtube:   "#"
+};
+
 (function () {
   'use strict'; // makes JavaScript stricter, so mistakes show up sooner
 
@@ -292,5 +309,32 @@
       ]);
     });
   }
+
+
+  // -----------------------------------------------------
+  // 6. SOCIAL MEDIA ICONS
+  // Each icon in the HTML has data-social="linkedin" (or tiktok, etc.).
+  // We look up its address in SOCIAL_LINKS (at the top of this file).
+  // -----------------------------------------------------
+  document.querySelectorAll('.social-link').forEach(function (link) {
+    var url = SOCIAL_LINKS[link.getAttribute('data-social')];
+
+    // A real link starts with http:// or https://
+    var isReal = typeof url === 'string' && /^https?:\/\//i.test(url);
+
+    if (isReal) {
+      link.href = url;
+      link.target = '_blank';           // open in a new tab
+      link.rel = 'noopener';            // a safety setting for links that open a new tab
+    } else {
+      // Still a placeholder: clicking does nothing (no jump) and shows "Coming soon"
+      link.classList.add('is-placeholder');
+      link.addEventListener('click', function (event) {
+        event.preventDefault();                       // stops the jump to the top of the page
+        link.classList.add('show-tip');               // shows the tip (helps on phones, which have no hover)
+        setTimeout(function () { link.classList.remove('show-tip'); }, 1800);
+      });
+    }
+  });
 
 })();

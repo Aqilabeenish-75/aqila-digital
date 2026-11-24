@@ -38,7 +38,7 @@ If these ever change, search all files for the old value. The form's email and W
 
 ## To do
 
-- [ ] Add my LinkedIn link (footer and Contact page)
+- [ ] Add my real social media links (LinkedIn, TikTok, Instagram, Facebook, YouTube): replace each `"#"` in `SOCIAL_LINKS` at the top of `main.js`
 - [ ] Replace the sample projects with real ones (`portfolio.html` and `index.html`), ideally with real screenshots
 - [ ] Remove the "Sample" tags and the "Real client projects will be added soon" note once real projects are in
 - [ ] Publish the site (Netlify or GitHub Pages) and add the final web address to the README

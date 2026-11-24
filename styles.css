@@ -745,85 +745,32 @@ em.accent {
   box-shadow: var(--shadow);
 }
 
-/* Thumbnail area at the top of each project card (same 16:10 shape for every card) */
+/* Picture at the top of each project card.
+   Your pictures come in two shapes, so there are two frame shapes that fit them,
+   and almost nothing is cut off at the edges:
+     thumb-tall = the website pictures (440 x 260)
+     thumb-wide = the store and lead-generation pictures (440 x 230)
+   Cards in the same row use the same shape, so they stay the same height.
+   The frame hides anything that sticks out (overflow: hidden), so the zoom on
+   hover stays inside it, and the card's rounded top corners cut the picture's
+   corners too. */
 .thumb {
-  display: grid;
-  place-items: center;
-  aspect-ratio: 16 / 10;
+  overflow: hidden;
+  background: var(--beige);        /* shows for a moment while the picture loads */
+}
+.thumb-tall { aspect-ratio: 440 / 260; }
+.thumb-wide { aspect-ratio: 440 / 230; }
+
+.thumb img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;               /* fills the frame without stretching the picture */
+  transition: transform 0.4s ease;
 }
 
-/* Monogram thumbnail (class "thumb-mono", used together with "thumb").
-   Same size and shape as before; a maroon picture with big initials. */
-.thumb-mono {
-  position: relative;
-  overflow: hidden;                /* the circles are cut off by the edges */
-  background: var(--maroon);       /* #6B1E2E */
-}
-
-/* Two soft decorative circles (hidden from screen readers with aria-hidden) */
-.mono-circle {
-  position: absolute;
-  border-radius: 50%;
-}
-.mono-circle-fill {                /* filled light peach at 14% opacity, top-right */
-  width: 180px;
-  height: 180px;
-  top: -70px;
-  right: -50px;
-  background: var(--peach-light);
-  opacity: 0.14;
-}
-.mono-circle-ring {                /* thin peach outline at 30% opacity, bottom-left */
-  width: 150px;
-  height: 150px;
-  bottom: -60px;
-  left: -45px;
-  border: 1.5px solid var(--peach);
-  opacity: 0.3;
-}
-
-/* Centred content: initials, short line, label */
-.mono-content {
-  position: relative;              /* sits above the circles */
-  z-index: 1;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  text-align: center;
-}
-
-.mono-initials {
-  font-family: var(--font-heading);
-  font-size: 46px;
-  font-weight: 700;
-  line-height: 1.1;
-  color: var(--cream);             /* #FBF6EF */
-  transition: transform 0.3s ease;
-}
-
-/* When the mouse is over the card, the initials grow a little */
-.project:hover .mono-initials { transform: scale(1.05); }
-
-.mono-line {
-  width: 40px;
-  height: 2px;
-  margin: 0.7rem 0 0.8rem;
-  background: var(--peach);        /* #F3B49A */
-}
-
-.mono-label {
-  font-family: var(--font-body);
-  font-size: 11px;
-  font-weight: 500;
-  letter-spacing: 0.18em;
-  text-transform: uppercase;
-  color: var(--peach-light);       /* #F9D9C8 */
-}
-
-/* Phones: slightly smaller initials */
-@media (max-width: 719px) {
-  .mono-initials { font-size: 40px; }
-}
+/* When the mouse is over the card, the picture zooms in a little */
+.project:hover .thumb img { transform: scale(1.02); }
 
 /* Text part of the card */
 .project-info { padding: 1.4rem 1.6rem 1.8rem; }
@@ -953,9 +900,27 @@ em.accent {
 .page-hero h1 { margin: 0.9rem 0; }
 .page-hero .lead { margin-inline: auto; }
 
-/* The story section sits closer to the intro above it */
-.story { padding-top: 2rem; }
-.story h2 { margin-bottom: 1rem; }
+/* About page only: a tighter intro (modifier class "page-hero-compact" in about.html),
+   so the intro and the whole "My story" section fit on one laptop screen.
+   Less space above and below; the text itself is unchanged. */
+.page-hero-compact { padding: 0.9rem 0 0.2rem; }
+.page-hero-compact h1 { margin: 0.4rem 0 0.3rem; }
+.page-hero-compact .lead { margin-bottom: 0; }
+
+/* The story section sits close to the intro above it */
+.story { padding-top: 0.7rem; }
+.story h2 { margin-bottom: 0.6rem; }
+.story p { margin-bottom: 0.75em; }          /* a little less space between the two paragraphs */
+.story .pills { margin-top: 1rem; }       /* pills sit closer to the text */
+
+/* The round picture on the About page: 340px wide, centred next to the text
+   (.about-grid already centres it vertically with align-items: center) */
+.story .about-photo { max-width: 340px; }
+
+/* Tablets (stacked layout): centred, 300px, as before */
+@media (max-width: 960px) {
+  .story .about-photo { max-width: 300px; margin-inline: auto; }
+}
 
 /* Skill pills */
 .pills {
@@ -1022,35 +987,62 @@ em.accent {
   grid-template-columns: 1fr 1fr;
   gap: 1.8rem;
 }
-.skill-card { padding: 2.2rem; }
-.skill-card h2 { margin: 0.8rem 0 0.4rem; }
-.skill-card > p { color: var(--text-muted); }
+.skill-card { padding: 34px 42px; }               /* 34px top/bottom, 42px left/right */
+.skill-card h2 {
+  margin: 0.6rem 0 0.3rem;
+  font-size: 2.3rem;                              /* smaller card titles (phones: see below) */
+}
+.skill-card > p:not(.mini-offer) { margin-bottom: 0.5em; color: var(--text-muted); }
 
-/* Ticked list: each item gets a peach circle with a check mark */
+/* Top line of a skill card: icon box and tag side by side, 14px apart */
+.skill-head {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+.skill-ico {
+  display: grid;
+  place-items: center;
+  flex-shrink: 0;
+  width: 56px;
+  height: 56px;
+  border-radius: 16px;
+  background: var(--peach-light);                 /* #F9D9C8 */
+  color: var(--maroon);                           /* the line icon */
+}
+
+/* Skills page intro: less space around it, so the intro and both cards fit one laptop screen.
+   (A modifier class, so the other pages keep their normal intro spacing.) */
+.page-hero-tight { padding: 1.4rem 0 0.8rem; }
+.page-hero-tight h1 { margin: 0.4rem 0 0.3rem; }
+.page-hero-tight .lead { margin-bottom: 0; }
+.skills-section { padding-top: 1.2rem; }          /* 0.8rem + 1.2rem = 2rem between the intro and the cards */
+
+/* Ticked list: each item gets a light peach circle with a maroon check mark */
 .ticks {
   list-style: none;
-  margin: 1.2rem 0 1.6rem;
+  margin: 0.6rem 0 0.8rem;
   padding: 0;
   display: grid;
-  gap: 0.7rem;
+  gap: 10px;
 }
 .ticks li {
   position: relative;
-  padding-left: 2rem;
+  padding-left: 2.2rem;
 }
 .ticks li::before {
   content: "✓";
   position: absolute;
   left: 0;
-  top: 0.2rem;
+  top: 0.15rem;
   display: grid;
   place-items: center;
-  width: 20px;
-  height: 20px;
+  width: 24px;
+  height: 24px;
   border-radius: 50%;
-  background: var(--peach);
-  color: var(--maroon-deep);
-  font-size: 0.7rem;
+  background: var(--peach-light);                 /* #F9D9C8 */
+  color: var(--maroon);
+  font-size: 0.8rem;
   font-weight: 700;
   line-height: 1;
 }
@@ -1398,6 +1390,8 @@ em.accent {
 /* ----- Grids: tablets (720px to 960px) = 2 columns, phones (under 720px) = 1 column ----- */
 @media (min-width: 720px) and (max-width: 960px) {
   .skill-grid { grid-template-columns: 1fr 1fr; }       /* the two big skill cards stay side by side */
+  /* A lone last project card sits centred, the same size as the others (so its picture matches) */
+  .grid-3 > .project:last-child:nth-child(odd) { width: calc(50% - 0.8rem); justify-self: center; }
   .foot { grid-template-columns: 1fr 1fr; gap: 2.2rem; }
   .foot > :first-child { grid-column: 1 / -1; }          /* logo + text across the top */
 }
@@ -1495,4 +1489,221 @@ em.accent {
 /* Phones: the round picture is centred and at most 280px wide */
 @media (max-width: 719px) {
   .about-photo { max-width: 280px; margin-inline: auto; }
+}
+
+/* About page on phones: picture centred above the text, at most 260px wide */
+@media (max-width: 719px) {
+  .story .about-photo { max-width: 260px; margin-inline: auto; }
+}
+
+
+/* -----------------------------------------------------
+   28. SOCIAL MEDIA ICONS (footer and Contact page)
+   A row of 5 round buttons. The links are set in SOCIAL_LINKS at the top of main.js.
+   ----------------------------------------------------- */
+.social {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-top: 1.2rem;
+}
+
+/* One round button: transparent, thin light-peach outline, light-peach icon */
+.social .social-link {
+  position: relative;               /* so the "Coming soon" tip can be placed above it */
+  display: grid;
+  place-items: center;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  border: 1px solid rgba(243, 180, 154, 0.55);
+  background: transparent;
+  color: var(--peach-light);        /* #F9D9C8 */
+  transition: background 0.2s, color 0.2s, border-color 0.2s, transform 0.2s;
+}
+
+.social .social-link svg {
+  width: 20px;
+  height: 20px;
+}
+
+/* Hover: filled peach with a deep maroon icon */
+.social .social-link:hover {
+  background: var(--peach);         /* #F3B49A */
+  border-color: var(--peach);
+  color: var(--maroon-deep);        /* #45111D */
+}
+
+/* "Coming soon" tip: only shown while the link is still a placeholder */
+.social-tip {
+  position: absolute;
+  bottom: calc(100% + 8px);
+  left: 50%;
+  transform: translateX(-50%);
+  padding: 0.25rem 0.65rem;
+  border-radius: 8px;
+  background: var(--cream);
+  color: var(--maroon-deep);
+  font-family: var(--font-body);
+  font-size: 0.75rem;
+  font-weight: 600;
+  line-height: 1.4;
+  white-space: nowrap;
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+  transition: opacity 0.2s, visibility 0.2s;
+}
+.social-link.is-placeholder:hover .social-tip,
+.social-link.is-placeholder:focus-visible .social-tip,
+.social-link.show-tip .social-tip {
+  opacity: 1;
+  visibility: visible;
+}
+
+/* Contact page card: thin divider, small uppercase label, then the icons */
+.follow {
+  margin-top: 2rem;
+  padding-top: 1.4rem;
+  border-top: 1px solid rgba(251, 246, 239, 0.15);
+}
+.follow-label {
+  margin: 0;
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--peach);
+}
+.follow .social { margin-top: 0.9rem; }
+
+/* Phones: bigger circles (44px) for easy tapping */
+@media (max-width: 719px) {
+  .social .social-link { width: 44px; height: 44px; }
+}
+
+/* Skills page on phones: smaller card titles (1.8rem) and a little less padding */
+@media (max-width: 719px) {
+  .skill-card { padding: 1.6rem; }
+  .skill-card h2 { font-size: 1.8rem; }
+}
+
+
+/* -----------------------------------------------------
+   29. HOME PAGE "MY SKILLS": logo, chips, badge and the maroon card
+   ----------------------------------------------------- */
+
+/* Logo centred above the "MY SKILLS" label: 64px tall (48px on phones) */
+.skills-logo {
+  display: block;
+  height: 64px;
+  width: auto;
+  margin: 0 auto 1rem;
+}
+
+/* ----- The three skill cards -----
+   Each card reads its colours from the variables (--t-...) below.
+   White is the normal look. The "maroon look" just changes the variables,
+   and the card's colours change smoothly. */
+.skill-tile {
+  --t-bg: #fff;
+  --t-border: var(--line);
+  --t-title: var(--maroon-deep);
+  --t-text: var(--text-muted);
+  --t-ico-bg: var(--peach);
+  --t-ico: var(--maroon-deep);
+  --t-chip-bg: var(--beige);
+  --t-chip: var(--maroon);
+  --t-link: var(--maroon);
+  --t-circle: 0;                      /* the soft circle is hidden on white cards */
+
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;                   /* the circle is cut off by the card's rounded corners */
+  background: var(--t-bg);
+  border-color: var(--t-border);
+  transition: background 0.35s, border-color 0.35s, transform 0.25s, box-shadow 0.25s;
+}
+
+/* Everything inside sits above the soft circle */
+.skill-tile > * { position: relative; z-index: 1; }
+
+/* The soft peach circle in the bottom-right corner */
+.skill-tile::after {
+  content: "";
+  position: absolute;
+  right: -55px;
+  bottom: -65px;
+  width: 200px;
+  height: 200px;
+  border-radius: 50%;
+  background: var(--peach);
+  opacity: var(--t-circle);
+  transition: opacity 0.35s;
+  pointer-events: none;               /* clicks go through it */
+}
+
+/* THE MAROON LOOK: the first card by default, and any card the mouse
+   (or the Tab key) is on. */
+.skill-tiles .skill-tile:first-child,
+.skill-tile:hover,
+.skill-tile:focus-within {
+  --t-bg: var(--maroon);                         /* #6B1E2E */
+  --t-border: var(--maroon);
+  --t-title: var(--cream);                       /* #FBF6EF */
+  --t-text: rgba(251, 246, 239, 0.85);           /* cream at 85% */
+  --t-ico-bg: rgba(249, 217, 200, 0.2);          /* light peach at 20% */
+  --t-ico: var(--peach-light);
+  --t-chip-bg: rgba(249, 217, 200, 0.16);        /* light peach at 16% */
+  --t-chip: var(--peach-light);
+  --t-link: var(--peach);                        /* #F3B49A */
+  --t-circle: 0.18;
+}
+
+/* While another card is hovered (or focused), the first card goes back to white.
+   (Uses :has(), which all current browsers support. In a very old browser the
+   first card would simply stay maroon.) */
+.skill-tiles:has(.skill-tile:not(:first-child):hover, .skill-tile:not(:first-child):focus-within)
+  .skill-tile:first-child:not(:hover):not(:focus-within) {
+  --t-bg: #fff;
+  --t-border: var(--line);
+  --t-title: var(--maroon-deep);
+  --t-text: var(--text-muted);
+  --t-ico-bg: var(--peach);
+  --t-ico: var(--maroon-deep);
+  --t-chip-bg: var(--beige);
+  --t-chip: var(--maroon);
+  --t-link: var(--maroon);
+  --t-circle: 0;
+}
+
+/* Apply the variables to the parts of the card */
+.skill-tile h3 { color: var(--t-title); transition: color 0.35s; }
+.skill-tile p  { color: var(--t-text);  transition: color 0.35s; }
+.skill-tile .ico { background: var(--t-ico-bg); color: var(--t-ico); transition: background 0.35s, color 0.35s; }
+.skill-tile .chips { margin: 0 0 1.2rem; }
+.skill-tile .chips span { background: var(--t-chip-bg); color: var(--t-chip); transition: background 0.35s, color 0.35s; }
+.skill-tile .more { margin-top: auto; align-self: flex-start; color: var(--t-link); transition: color 0.35s; }
+.skill-tile .more:hover { color: var(--t-link); }   /* keeps its underline, no colour jump */
+
+/* "MAIN SKILL" badge: small peach pill in the top-right corner of the first card */
+.main-badge {
+  position: absolute;
+  top: 1.2rem;
+  right: 1.2rem;
+  z-index: 2;
+  padding: 0.25rem 0.75rem;
+  border-radius: 999px;
+  background: var(--peach);           /* #F3B49A */
+  color: var(--maroon-deep);          /* #45111D */
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+
+/* Phones: smaller logo */
+@media (max-width: 719px) {
+  .skills-logo { height: 48px; }
 }
